@@ -1,0 +1,20 @@
+<configuration>
+	 <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
+        <type>mybatis</type>
+        <host>127.0.0.1</host>
+        <key>mybatisTest222</key>
+        <tags>mybatis</tags>
+        <mdc>true</mdc>
+        <location>true</location>
+        <callerStackIndex>0</callerStackIndex>
+    </appender>
+  	 <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">   
+      <encoder>   
+        <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>   
+      </encoder>   
+    </appender> 
+    <root level="INFO">
+       	<appender-ref ref="STDOUT" /> 
+       	<appender-ref ref="LOGSTASH" /> 
+  	</root> 
+</configuration>
