@@ -1,6 +1,7 @@
 package com.yunjinrong.springbootmybatis.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,7 +18,6 @@ import io.swagger.annotations.ApiOperation;
 @Api(value="企业信息")
 @RestController
 public class UserController {
-//	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
@@ -28,6 +28,15 @@ public class UserController {
     @RequestMapping(value="/findUserList",method=RequestMethod.GET)
     public Page<User> findUserList(@RequestParam("page")int page,@RequestParam("rows") int rows) {
     	Page<User> p = userService.findUserList(page,rows);
+    	return p;
+    }
+    
+    @ApiOperation(value = "用户列表查询",notes="用户列表查询")
+    @ApiImplicitParams({
+    @ApiImplicitParam(paramType="body",dataType="User",name="user",value="用户",required=true)})
+    @RequestMapping(value="/findUser",method=RequestMethod.POST)
+    public Page<User> findUser(@RequestBody User user) {
+    	Page<User> p = userService.findUserList(user.getPage(),user.getRows());
     	return p;
     }
     

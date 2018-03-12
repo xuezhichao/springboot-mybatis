@@ -1,13 +1,39 @@
 package com.yunjinrong.springbootmybatis.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 public class User {
 
+	@ApiModelProperty(value="id")
 	private Long id;
+	@ApiModelProperty(value="用户姓名")
 	private String name;// 用户姓名
+	@ApiModelProperty(value="用户年龄")
 	private Integer age;// 用户年龄
+	@ApiModelProperty(value="用户密码")
 	private String password;// 用户密码
-
 	
+	private int rows;
+	
+	private int page;
+	
+	public int getRows() {
+		return rows;
+	}
+
+	public int getPage() {
+		return page;
+	}
+
+	public void setRows(int rows) {
+		this.rows = rows;
+	}
+
+	public void setPage(int page) {
+		this.page = page;
+	}
+
 	public Long getId() {
 		return id;
 	}

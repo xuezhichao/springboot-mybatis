@@ -41,7 +41,7 @@ public class Swagger2 {
                 .title("springboot利用swagger构建api文档")
                 .description("简单优雅的restfun风格，http://blog.csdn.net/forezp")
                 .termsOfServiceUrl("http://blog.csdn.net/forezp")
-                .version("2.2.2")
+                .version("1.0")
                 .build();
     }
 }
