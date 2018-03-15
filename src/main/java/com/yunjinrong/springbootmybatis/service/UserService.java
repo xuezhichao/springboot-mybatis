@@ -17,28 +17,28 @@ public interface UserService {
 	 * @param user
 	 * @return
 	 */
-	public int insertUser(User user);
+	public User insertUser(User user);
 	/**
 	 * <p>Title: deleteUser</p>
 	 * <p>Description: 用户删除</p>
 	 * @param id
 	 * @return
 	 */
-	public int deleteUser(Long id);
+	public int deleteUser(String id);
 	/**
 	 * <p>Title: updateUserById</p>
 	 * <p>Description: 用户修改</p>
 	 * @param user
 	 * @return
 	 */
-	public int updateUserById(User user);
+	public User updateUserById(User user);
 	/**
 	 * <p>Title: fingUserById</p>
 	 * <p>Description: 根据用户主键查询用户信息</p>
 	 * @param id
 	 * @return
 	 */
-	public User fingUserById(Long id);
+	public User fingUserById(String id);
 	/**
 	 * <p>Title: findUserList</p>
 	 * <p>Description: 分页查询</p>

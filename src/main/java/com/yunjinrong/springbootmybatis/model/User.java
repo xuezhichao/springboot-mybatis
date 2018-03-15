@@ -1,12 +1,15 @@
 package com.yunjinrong.springbootmybatis.model;
 
-import io.swagger.annotations.ApiModel;
+import java.io.Serializable;
+
 import io.swagger.annotations.ApiModelProperty;
 
-public class User {
+public class User implements Serializable{
 
+	/** serialVersionUID*/
+	private static final long serialVersionUID = 3826565669715537879L;
 	@ApiModelProperty(value="id")
-	private Long id;
+	private String id;
 	@ApiModelProperty(value="用户姓名")
 	private String name;// 用户姓名
 	@ApiModelProperty(value="用户年龄")
@@ -34,11 +37,11 @@ public class User {
 		this.page = page;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

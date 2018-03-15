@@ -1,6 +1,7 @@
 package com.yunjinrong.springbootmybatis.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CacheConfig;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,6 +14,7 @@ import com.yunjinrong.springbootmybatis.model.User;
 import com.yunjinrong.springbootmybatis.service.UserService;
 
 @Service("userService")
+@CacheConfig(cacheNames="userCache")
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -25,29 +27,31 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	//@CachePut缓存新增的或更新的数据到缓存,其中缓存名字是 people 。数据的key是person的id
-    @CachePut(value = "user", key = "#p0.id")
-	public int insertUser(User user) {
-		return userMapper.insert(user);
+    @CachePut(key = "#p0.id")
+	public User insertUser(User user) {
+		userMapper.insert(user);
+		return user;
 	}
 
 	@Override
 	//@CacheEvict 从缓存people中删除key为id 的数据
-    @CacheEvict(value = "user")
-	public int deleteUser(Long id) {
+    @CacheEvict(key = "#p0")
+	public int deleteUser(String id) {
 		return userMapper.deleteByPrimaryKey(id);
 	}
 
 	@Override
 	//@CachePut缓存新增的或更新的数据到缓存,其中缓存名字是 people 。数据的key是person的id
-    @CachePut(value = "user", key = "#user.id")
-	public int updateUserById(User user) {
-		return userMapper.updateByPrimaryKey(user);
+    @CachePut(key = "#p0.id")
+	public User updateUserById(User user) {
+		userMapper.updateByPrimaryKey(user);
+		return user;
 	}
 
 	@Override
 	//@Cacheable缓存key为person 的id 数据到缓存people 中,如果没有指定key则方法参数作为key保存到缓存中。
-    @Cacheable(value = "user", key = "#id")
-	public User fingUserById(Long id) {
+    @Cacheable(key = "#p0")
+	public User fingUserById(String id) {
 		return userMapper.selectByPrimaryKey(id);
 	}
 

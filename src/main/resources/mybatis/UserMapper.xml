@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.yunjinrong.springbootmybatis.mapper.UserMapper">
 	<resultMap id="BaseResultMap" type="com.yunjinrong.springbootmybatis.model.User">
-		<id column="id" jdbcType="BIGINT" property="id" />
+		<id column="id" jdbcType="VARCHAR" property="id" />
 		<result column="name" jdbcType="VARCHAR" property="name" />
 		<result column="password" jdbcType="VARCHAR" property="password" />
 		<result column="age" jdbcType="INTEGER" property="age" />
@@ -11,15 +11,18 @@
 		SELECT age FROM USER
 		WHERE name = #{ name,jdbcType=VARCHAR}
 	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+	<delete id="deleteByPrimaryKey" parameterType="String">
 		delete from user
-		where id = #{id,jdbcType=BIGINT}
+		where id = #{id,jdbcType=VARCHAR}
 	</delete>
 	<insert id="insert" parameterType="com.yunjinrong.springbootmybatis.model.User">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
 		insert into user (id, name,
 		password,
 		age)
-		values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR},
+		values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR},
 		#{password,jdbcType=VARCHAR},
 		#{age,jdbcType=INTEGER})
 	</insert>
@@ -31,14 +34,13 @@
 		#{password,jdbcType=VARCHAR},
 		age = #{age,jdbcType=INTEGER}
 		where id =
-		#{id,jdbcType=BIGINT}
+		#{id,jdbcType=VARCHAR}
 	</update>
-	<select id="selectByPrimaryKey" parameterType="java.lang.Long"
-		resultMap="BaseResultMap">
+	<select id="selectByPrimaryKey" parameterType="String" resultMap="BaseResultMap">
 		select id, name, password, age
 		from user
 		where id =
-		#{id,jdbcType=BIGINT}
+		#{id,jdbcType=VARCHAR}
 	</select>
 	<select id="selectAll" resultMap="BaseResultMap">
 		select id, name, password, age

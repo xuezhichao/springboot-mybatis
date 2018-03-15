@@ -10,11 +10,11 @@ import com.yunjinrong.springbootmybatis.model.User;
 public interface UserMapper {
 	String selectAgeByName(String name);// 根据姓名读取年龄
 
-	int deleteByPrimaryKey(Long id);
+	int deleteByPrimaryKey(String id);
 
 	int insert(User record);
 
-	User selectByPrimaryKey(Long id);
+	User selectByPrimaryKey(String id);
 
 	List<User> selectAll();
 
