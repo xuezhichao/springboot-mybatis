@@ -12,12 +12,6 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 
 import redis.clients.jedis.JedisPoolConfig;
 
-/** 
- *  
- * redies缓存配置管理
- * @author 张震 
- * 
- */  
 @Configuration  
 @EnableAutoConfiguration  
 public class RedisConfig {  

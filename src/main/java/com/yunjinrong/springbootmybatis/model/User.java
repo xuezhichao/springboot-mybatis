@@ -6,16 +6,15 @@ import io.swagger.annotations.ApiModelProperty;
 
 public class User implements Serializable{
 
-	/** serialVersionUID*/
 	private static final long serialVersionUID = 3826565669715537879L;
 	@ApiModelProperty(value="id")
 	private String id;
 	@ApiModelProperty(value="用户姓名")
-	private String name;// 用户姓名
+	private String name;
 	@ApiModelProperty(value="用户年龄")
-	private Integer age;// 用户年龄
+	private Integer age;
 	@ApiModelProperty(value="用户密码")
-	private String password;// 用户密码
+	private String password;
 	
 	private int rows;
 	

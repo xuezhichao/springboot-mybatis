@@ -1,6 +1,11 @@
 server:
   port: 8090
 spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/boot-mongo
+  application:
+    name: springboot-demo
   #velocity:
     #charset: UTF-8
     #properties.input.encoding: UTF-8
@@ -38,5 +43,6 @@ pagehelper:
   supportMethodsArguments: true
   count: countSql
   params: count
+
 
   

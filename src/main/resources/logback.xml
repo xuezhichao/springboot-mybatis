@@ -2,7 +2,7 @@
 	 <appender name="LOGSTASH" class="com.cwbase.logback.RedisAppender">
         <type>mybatis</type>
         <host>127.0.0.1</host>
-        <key>mybatisTest222</key>
+        <key>mybatisTest</key>
         <tags>mybatis</tags>
         <mdc>true</mdc>
         <location>true</location>
