@@ -18,6 +18,9 @@ public interface UserService {
 	 * @return
 	 */
 	public User insertUser(User user);
+
+	public void testTransaction2(User user);
+	public void testTransaction(User user);
 	/**
 	 * <p>Title: deleteUser</p>
 	 * <p>Description: 用户删除</p>

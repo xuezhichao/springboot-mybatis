@@ -65,5 +65,14 @@ public class UserController {
     	userService.deleteUser(id);
     	return true;
     }
+
+    @RequestMapping("/testTransaction")
+    public void testTransaction(){
+        User user = new User();
+        user.setName("张三");
+        user.setAge(12);
+        user.setPassword("123");
+        userService.testTransaction2(user);
+    }
     
 }

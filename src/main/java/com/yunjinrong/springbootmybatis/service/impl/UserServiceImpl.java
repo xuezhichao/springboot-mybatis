@@ -42,6 +42,23 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	@Transactional
+	public void testTransaction(User user) {
+		try{
+			userMapper.insert(user);
+			user.setAge(16);
+			userMapper.updateByPrimaryKey(user);
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+	}
+
+	@Transactional
+	public void testTransaction2(User user){
+		testTransaction(user);
+	}
+
+	@Override
 	//@CacheEvict 从缓存people中删除key为id 的数据
     @CacheEvict(key = "#p0")
 	@Transactional
